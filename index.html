@@ -1,0 +1,2490 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Hela Full Board</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f5f6f8;
+  color:#222;
+}
+
+button,input,select,textarea{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+.hidden{
+  display:none!important;
+}
+
+.container{
+  width:100%;
+  max-width:1100px;
+  margin:auto;
+  padding:15px;
+}
+
+/* LOGIN */
+
+.login-page{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#fff1d8,#f7f7f7);
+  padding:20px;
+}
+
+.login-box{
+  width:100%;
+  max-width:430px;
+  background:white;
+  padding:30px 22px;
+  border-radius:25px;
+  box-shadow:0 15px 45px rgba(0,0,0,.12);
+}
+
+.logo{
+  text-align:center;
+  font-size:60px;
+}
+
+.login-box h1{
+  text-align:center;
+  margin:10px 0 25px;
+}
+
+label{
+  display:block;
+  font-size:14px;
+  font-weight:bold;
+  margin-bottom:5px;
+}
+
+input,
+select,
+textarea{
+  width:100%;
+  padding:13px;
+  border:1px solid #ddd;
+  border-radius:12px;
+  outline:none;
+  margin-bottom:15px;
+  background:#fff;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+  border-color:#ff8a00;
+}
+
+.btn{
+  border:0;
+  padding:12px 18px;
+  border-radius:12px;
+  background:#ff8500;
+  color:white;
+  font-weight:bold;
+}
+
+.btn.green{
+  background:#198754;
+}
+
+.btn.red{
+  background:#dc3545;
+}
+
+.btn.dark{
+  background:#222;
+}
+
+.btn.gray{
+  background:#eee;
+  color:#222;
+}
+
+.full{
+  width:100%;
+}
+
+.error{
+  color:#dc3545;
+  margin-top:12px;
+  font-size:14px;
+}
+
+/* HEADER */
+
+.header{
+  background:linear-gradient(135deg,#ff8300,#ffc107);
+  color:white;
+  padding:22px 15px 30px;
+  border-radius:0 0 30px 30px;
+}
+
+.header h1{
+  font-size:25px;
+}
+
+.header p{
+  margin-top:6px;
+  opacity:.9;
+}
+
+/* CARDS */
+
+.card{
+  background:white;
+  border-radius:18px;
+  padding:17px;
+  margin:14px 0;
+  box-shadow:0 5px 20px rgba(0,0,0,.06);
+}
+
+.card h2{
+  margin-bottom:15px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+.grid3{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+
+.service{
+  background:white;
+  border:0;
+  border-radius:18px;
+  padding:20px 10px;
+  text-align:center;
+  box-shadow:0 5px 18px rgba(0,0,0,.07);
+}
+
+.service .icon{
+  font-size:30px;
+}
+
+.service b{
+  display:block;
+  margin-top:9px;
+}
+
+/* STATS */
+
+.stat{
+  background:white;
+  border-radius:17px;
+  padding:18px;
+  box-shadow:0 5px 18px rgba(0,0,0,.06);
+}
+
+.stat strong{
+  display:block;
+  font-size:28px;
+  margin:7px 0;
+}
+
+/* ITEM */
+
+.item{
+  border:1px solid #eee;
+  border-radius:14px;
+  padding:14px;
+  margin:10px 0;
+}
+
+.item h3{
+  margin-bottom:7px;
+}
+
+.muted{
+  color:#777;
+  font-size:13px;
+}
+
+.badge{
+  display:inline-block;
+  background:#fff0dc;
+  color:#c45d00;
+  border-radius:20px;
+  padding:5px 10px;
+  font-size:12px;
+  font-weight:bold;
+  margin-bottom:7px;
+}
+
+/* NAV */
+
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  background:white;
+  border-top:1px solid #ddd;
+  display:flex;
+  justify-content:space-around;
+  padding:8px 5px;
+  z-index:999;
+}
+
+.bottom-nav button{
+  border:0;
+  background:none;
+  color:#555;
+  padding:5px;
+  font-size:12px;
+}
+
+.bottom-nav button.active{
+  color:#ff7b00;
+  font-weight:bold;
+}
+
+.page{
+  padding-bottom:80px;
+}
+
+/* TABLE */
+
+.table-wrap{
+  overflow-x:auto;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+th,
+td{
+  padding:10px;
+  border-bottom:1px solid #eee;
+  text-align:left;
+  white-space:nowrap;
+}
+
+/* TABS */
+
+.tabs{
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  margin-bottom:12px;
+}
+
+.tabs button{
+  white-space:nowrap;
+}
+
+/* RESPONSIVE */
+
+@media(min-width:700px){
+
+  .grid{
+    grid-template-columns:repeat(4,1fr);
+  }
+
+  .grid3{
+    grid-template-columns:repeat(5,1fr);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= LOGIN ================= -->
+
+<section id="loginPage" class="login-page">
+
+  <div class="login-box">
+
+    <div class="logo">🏫</div>
+
+    <h1>Hela Full Board</h1>
+
+    <label>Email</label>
+    <input
+      id="loginEmail"
+      type="email"
+      placeholder="Enter email"
+    >
+
+    <label>Password</label>
+    <input
+      id="loginPassword"
+      type="password"
+      placeholder="Enter password"
+    >
+
+    <button
+      class="btn full"
+      onclick="loginUser()"
+    >
+      Login
+    </button>
+
+    <p id="loginError" class="error"></p>
+
+  </div>
+
+</section>
+
+
+<!-- ================= APPLICATION ================= -->
+
+<section id="app" class="hidden">
+
+  <div id="header"></div>
+
+  <main
+    id="content"
+    class="container page"
+  ></main>
+
+</section>
+
+
+<script type="module">
+
+/* =========================================================
+   FIREBASE
+========================================================= */
+
+import {
+  initializeApp
+}
+from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+
+import {
+  getAuth,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signOut
+}
+from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+
+import {
+  getFirestore,
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  query,
+  where,
+  serverTimestamp
+}
+from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
+
+/* =========================================================
+   FIREBASE CONFIG
+========================================================= */
+
+const firebaseConfig = {
+
+  apiKey:
+  "AIzaSyDescelmyDH66voxzjVRZBug4JqHS6ZIuc",
+
+  authDomain:
+  "tyty-5f65b.firebaseapp.com",
+
+  projectId:
+  "tyty-5f65b",
+
+  storageBucket:
+  "tyty-5f65b.firebasestorage.app",
+
+  messagingSenderId:
+  "686305196099",
+
+  appId:
+  "1:686305196099:web:f074e00910490b8b4efcf6",
+
+  measurementId:
+  "G-3XM0EXZM99"
+};
+
+
+const firebaseApp =
+  initializeApp(firebaseConfig);
+
+const auth =
+  getAuth(firebaseApp);
+
+const db =
+  getFirestore(firebaseApp);
+
+
+/* =========================================================
+   GLOBAL VARIABLES
+========================================================= */
+
+let currentUser = null;
+
+let userProfile = {};
+
+let adminUser = false;
+
+let currentPage = "home";
+
+
+/* =========================================================
+   HELPERS
+========================================================= */
+
+const $ = id =>
+  document.getElementById(id);
+
+
+function escapeHTML(value){
+
+  if(value === undefined ||
+     value === null){
+
+    return "";
+  }
+
+  return String(value)
+  .replaceAll("&","&amp;")
+  .replaceAll("<","&lt;")
+  .replaceAll(">","&gt;")
+  .replaceAll('"',"&quot;")
+  .replaceAll("'","&#039;");
+}
+
+
+function formatDate(value){
+
+  if(!value){
+    return "";
+  }
+
+  try{
+
+    if(value.toDate){
+
+      return value
+      .toDate()
+      .toLocaleDateString("en-IN");
+
+    }
+
+    return value;
+
+  }catch{
+
+    return "";
+
+  }
+
+}
+
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+window.loginUser = async function(){
+
+  const email =
+    $("loginEmail").value.trim();
+
+  const password =
+    $("loginPassword").value;
+
+  $("loginError").textContent =
+    "Login हो रहा है...";
+
+  try{
+
+    await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+
+  }catch(error){
+
+    $("loginError").textContent =
+      error.message;
+
+  }
+
+};
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+window.logoutUser = async function(){
+
+  await signOut(auth);
+
+};
+
+
+/* =========================================================
+   AUTH STATE
+========================================================= */
+
+onAuthStateChanged(
+  auth,
+  async user => {
+
+    if(!user){
+
+      $("loginPage")
+      .classList
+      .remove("hidden");
+
+      $("app")
+      .classList
+      .add("hidden");
+
+      return;
+
+    }
+
+
+    currentUser = user;
+
+
+    try{
+
+      const profileDoc =
+        await getDoc(
+          doc(
+            db,
+            "users",
+            user.uid
+          )
+        );
+
+
+      if(profileDoc.exists()){
+
+        userProfile =
+          profileDoc.data();
+
+      }else{
+
+        userProfile = {
+
+          name:
+            user.email,
+
+          email:
+            user.email,
+
+          class:
+            "",
+
+          section:
+            ""
+
+        };
+
+      }
+
+
+      /*
+       ADMIN SECURITY
+
+       Firebase Firestore में:
+
+       admins
+          UID
+             active: true
+      */
+
+      const adminDoc =
+        await getDoc(
+          doc(
+            db,
+            "admins",
+            user.uid
+          )
+        );
+
+
+      adminUser =
+        adminDoc.exists() &&
+        adminDoc.data().active !== false;
+
+
+      $("loginPage")
+      .classList
+      .add("hidden");
+
+      $("app")
+      .classList
+      .remove("hidden");
+
+
+      currentPage = "home";
+
+      render();
+
+    }catch(error){
+
+      alert(
+        "Firebase Error: " +
+        error.message
+      );
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+function renderHeader(title){
+
+  $("header").innerHTML = `
+
+    <header class="header">
+
+      <div class="container">
+
+        <h1>
+          🏫 ${escapeHTML(title)}
+        </h1>
+
+        <p>
+          ${escapeHTML(
+            userProfile.name ||
+            currentUser?.email ||
+            "User"
+          )}
+
+          ${
+            adminUser
+            ? " • ADMIN"
+            : ""
+          }
+
+        </p>
+
+      </div>
+
+    </header>
+
+  `;
+
+}
+
+
+/* =========================================================
+   BOTTOM NAV
+========================================================= */
+
+function renderNav(){
+
+  return `
+
+    <div class="bottom-nav">
+
+      <button
+        class="${currentPage==="home"?"active":""}"
+        onclick="openPage('home')"
+      >
+        🏠
+        <br>
+        Home
+      </button>
+
+
+      <button
+        class="${currentPage==="homework"?"active":""}"
+        onclick="openPage('homework')"
+      >
+        📚
+        <br>
+        Homework
+      </button>
+
+
+      <button
+        class="${currentPage==="notifications"?"active":""}"
+        onclick="openPage('notifications')"
+      >
+        🔔
+        <br>
+        Notice
+      </button>
+
+
+      ${
+        adminUser
+        ?
+        `
+        <button
+          class="${currentPage==="admin"?"active":""}"
+          onclick="openPage('admin')"
+        >
+          ⚙️
+          <br>
+          Admin
+        </button>
+        `
+        :
+        ""
+      }
+
+
+      <button
+        onclick="logoutUser()"
+      >
+        🚪
+        <br>
+        Logout
+      </button>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================================================
+   PAGE ROUTER
+========================================================= */
+
+window.openPage = function(page){
+
+  currentPage = page;
+
+  render();
+
+};
+
+
+/* =========================================================
+   MAIN RENDER
+========================================================= */
+
+async function render(){
+
+  if(adminUser){
+
+    if(
+      currentPage === "admin"
+    ){
+
+      await renderAdmin();
+
+      return;
+
+    }
+
+  }
+
+
+  if(
+    currentPage === "home"
+  ){
+
+    if(adminUser){
+
+      await renderAdminHome();
+
+    }else{
+
+      renderStudentHome();
+
+    }
+
+    return;
+
+  }
+
+
+  if(
+    currentPage === "homework"
+  ){
+
+    if(adminUser){
+
+      await renderAdminHomework();
+
+    }else{
+
+      await renderStudentHomework();
+
+    }
+
+    return;
+
+  }
+
+
+  if(
+    currentPage === "notifications"
+  ){
+
+    if(adminUser){
+
+      await renderAdminNotifications();
+
+    }else{
+
+      await renderStudentNotifications();
+
+    }
+
+    return;
+
+  }
+
+}
+
+
+/* =========================================================
+   STUDENT HOME
+========================================================= */
+
+function renderStudentHome(){
+
+  renderHeader(
+    "Student Dashboard"
+  );
+
+
+  $("content").innerHTML = `
+
+    <div class="card">
+
+      <h2>
+        Welcome 👋
+      </h2>
+
+      <p>
+        ${escapeHTML(
+          userProfile.name ||
+          currentUser.email
+        )}
+      </p>
+
+      <p class="muted">
+        Class:
+        ${escapeHTML(
+          userProfile.class || "-"
+        )}
+
+        &nbsp; | &nbsp;
+
+        Section:
+        ${escapeHTML(
+          userProfile.section || "-"
+        )}
+      </p>
+
+    </div>
+
+
+    <div class="grid">
+
+      <button
+        class="service"
+        onclick="openPage('homework')"
+      >
+        <div class="icon">
+          📚
+        </div>
+
+        <b>
+          Homework
+        </b>
+
+      </button>
+
+
+      <button
+        class="service"
+        onclick="openPage('notifications')"
+      >
+        <div class="icon">
+          🔔
+        </div>
+
+        <b>
+          Circular
+        </b>
+
+      </button>
+
+
+      <button
+        class="service"
+      >
+        <div class="icon">
+          📅
+        </div>
+
+        <b>
+          Calendar
+        </b>
+
+      </button>
+
+
+      <button
+        class="service"
+      >
+        <div class="icon">
+          ✅
+        </div>
+
+        <b>
+          Attendance
+        </b>
+
+      </button>
+
+
+      <button
+        class="service"
+      >
+        <div class="icon">
+          💳
+        </div>
+
+        <b>
+          Fees
+        </b>
+
+      </button>
+
+
+      <button
+        class="service"
+      >
+        <div class="icon">
+          🕐
+        </div>
+
+        <b>
+          Time Table
+        </b>
+
+      </button>
+
+
+      <button
+        class="service"
+      >
+        <div class="icon">
+          📝
+        </div>
+
+        <b>
+          Exam
+        </b>
+
+      </button>
+
+
+      <button
+        class="service"
+      >
+        <div class="icon">
+          🏆
+        </div>
+
+        <b>
+          Results
+        </b>
+
+      </button>
+
+    </div>
+
+
+    ${renderNav()}
+
+  `;
+
+}
+
+
+/* =========================================================
+   TARGET QUERY
+========================================================= */
+
+async function getTargetedDocuments(
+  collectionName
+){
+
+  const records = [];
+
+
+  /*
+   ALL
+  */
+
+  try{
+
+    const q =
+      query(
+        collection(
+          db,
+          collectionName
+        ),
+        where(
+          "targetType",
+          "==",
+          "all"
+        )
+      );
+
+    const snap =
+      await getDocs(q);
+
+    snap.forEach(item=>{
+
+      records.push({
+
+        id:item.id,
+
+        ...item.data()
+
+      });
+
+    });
+
+  }catch(error){
+
+    console.log(error);
+
+  }
+
+
+  /*
+   CLASS
+  */
+
+  try{
+
+    const q =
+      query(
+        collection(
+          db,
+          collectionName
+        ),
+        where(
+          "targetType",
+          "==",
+          "class"
+        )
+      );
+
+    const snap =
+      await getDocs(q);
+
+    snap.forEach(item=>{
+
+      const data =
+        item.data();
+
+      const sameClass =
+        data.targetClass ===
+        userProfile.class;
+
+
+      const sameSection =
+        data.targetSection ===
+        "all" ||
+        data.targetSection ===
+        userProfile.section;
+
+
+      if(
+        sameClass &&
+        sameSection
+      ){
+
+        records.push({
+
+          id:item.id,
+
+          ...data
+
+        });
+
+      }
+
+    });
+
+  }catch(error){
+
+    console.log(error);
+
+  }
+
+
+  /*
+   SPECIFIC STUDENT
+  */
+
+  try{
+
+    const q =
+      query(
+        collection(
+          db,
+          collectionName
+        ),
+        where(
+          "targetType",
+          "==",
+          "student"
+        )
+      );
+
+    const snap =
+      await getDocs(q);
+
+    snap.forEach(item=>{
+
+      const data =
+        item.data();
+
+      if(
+        data.targetStudentId ===
+        currentUser.uid
+      ){
+
+        records.push({
+
+          id:item.id,
+
+          ...data
+
+        });
+
+      }
+
+    });
+
+  }catch(error){
+
+    console.log(error);
+
+  }
+
+
+  records.sort(
+
+    (a,b)=>
+      (b.createdAt?.seconds || 0) -
+      (a.createdAt?.seconds || 0)
+
+  );
+
+
+  return records;
+
+}
+
+
+/* =========================================================
+   STUDENT HOMEWORK
+========================================================= */
+
+async function renderStudentHomework(){
+
+  renderHeader(
+    "Homework"
+  );
+
+
+  $("content").innerHTML = `
+
+    <div class="card">
+      <b>📚 Your Homework</b>
+      <p class="muted">
+        Class:
+        ${escapeHTML(
+          userProfile.class || "-"
+        )}
+        -
+        ${escapeHTML(
+          userProfile.section || "-"
+        )}
+      </p>
+    </div>
+
+    <div id="homeworkList">
+      Loading...
+    </div>
+
+    ${renderNav()}
+
+  `;
+
+
+  const records =
+    await getTargetedDocuments(
+      "homework"
+    );
+
+
+  if(!records.length){
+
+    $("homeworkList").innerHTML = `
+
+      <div class="card">
+
+        अभी कोई homework नहीं है।
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  $("homeworkList").innerHTML =
+    records.map(item=>`
+
+      <div class="card">
+
+        <span class="badge">
+          📚
+          ${escapeHTML(
+            item.subject ||
+            "Homework"
+          )}
+        </span>
+
+        <h2>
+          ${escapeHTML(
+            item.title
+          )}
+        </h2>
+
+        <p>
+          ${escapeHTML(
+            item.description
+          )}
+        </p>
+
+        <p class="muted">
+
+          Due Date:
+          ${escapeHTML(
+            item.dueDate ||
+            "Not specified"
+          )}
+
+          <br>
+
+          ${formatDate(
+            item.createdAt
+          )}
+
+        </p>
+
+      </div>
+
+    `).join("");
+
+}
+
+
+/* =========================================================
+   STUDENT NOTIFICATIONS
+========================================================= */
+
+async function renderStudentNotifications(){
+
+  renderHeader(
+    "Notifications"
+  );
+
+
+  $("content").innerHTML = `
+
+    <div class="card">
+
+      <b>
+        🔔 School Notifications
+      </b>
+
+    </div>
+
+    <div id="notificationList">
+      Loading...
+    </div>
+
+    ${renderNav()}
+
+  `;
+
+
+  const records =
+    await getTargetedDocuments(
+      "notifications"
+    );
+
+
+  if(!records.length){
+
+    $("notificationList").innerHTML = `
+
+      <div class="card">
+
+        अभी कोई notification नहीं है।
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  $("notificationList").innerHTML =
+    records.map(item=>`
+
+      <div class="card">
+
+        <span class="badge">
+          🔔 Notice
+        </span>
+
+        <h2>
+          ${escapeHTML(
+            item.title
+          )}
+        </h2>
+
+        <p>
+          ${escapeHTML(
+            item.message
+          )}
+        </p>
+
+        <p class="muted">
+          ${formatDate(
+            item.createdAt
+          )}
+        </p>
+
+      </div>
+
+    `).join("");
+
+}
+
+
+/* =========================================================
+   ADMIN HOME
+========================================================= */
+
+async function renderAdminHome(){
+
+  renderHeader(
+    "Admin Dashboard"
+  );
+
+
+  let students = 0;
+  let homework = 0;
+  let notifications = 0;
+
+
+  try{
+
+    const studentsSnap =
+      await getDocs(
+        collection(
+          db,
+          "users"
+        )
+      );
+
+    students =
+      studentsSnap.size;
+
+
+    const homeworkSnap =
+      await getDocs(
+        collection(
+          db,
+          "homework"
+        )
+      );
+
+    homework =
+      homeworkSnap.size;
+
+
+    const notificationSnap =
+      await getDocs(
+        collection(
+          db,
+          "notifications"
+        )
+      );
+
+    notifications =
+      notificationSnap.size;
+
+  }catch(error){
+
+    console.log(error);
+
+  }
+
+
+  $("content").innerHTML = `
+
+    <div class="grid3">
+
+      <div class="stat">
+
+        👨‍🎓
+
+        <strong>
+          ${students}
+        </strong>
+
+        Students
+
+      </div>
+
+
+      <div class="stat">
+
+        📚
+
+        <strong>
+          ${homework}
+        </strong>
+
+        Homework
+
+      </div>
+
+
+      <div class="stat">
+
+        🔔
+
+        <strong>
+          ${notifications}
+        </strong>
+
+        Notifications
+
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <h2>
+        Quick Actions
+      </h2>
+
+
+      <div class="grid">
+
+        <button
+          class="service"
+          onclick="openPage('homework')"
+        >
+
+          <div class="icon">
+            📚
+          </div>
+
+          <b>
+            Send Homework
+          </b>
+
+        </button>
+
+
+        <button
+          class="service"
+          onclick="openPage('notifications')"
+        >
+
+          <div class="icon">
+            🔔
+          </div>
+
+          <b>
+            Send Notification
+          </b>
+
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <h2>
+        Admin Account
+      </h2>
+
+      <p>
+        ${escapeHTML(
+          currentUser.email
+        )}
+      </p>
+
+      <p class="muted">
+        UID:
+        ${escapeHTML(
+          currentUser.uid
+        )}
+      </p>
+
+    </div>
+
+
+    ${renderNav()}
+
+  `;
+
+}
+
+
+/* =========================================================
+   ADMIN ROUTER
+========================================================= */
+
+async function renderAdmin(){
+
+  if(
+    currentPage === "admin"
+  ){
+
+    currentPage = "home";
+
+    await renderAdminHome();
+
+    return;
+
+  }
+
+}
+
+
+/* =========================================================
+   TARGET UI
+========================================================= */
+
+function targetHTML(prefix){
+
+  return `
+
+    <label>
+      किसे भेजना है?
+    </label>
+
+    <select
+      id="${prefix}TargetType"
+      onchange="targetChanged('${prefix}')"
+    >
+
+      <option value="all">
+        सभी Students
+      </option>
+
+      <option value="class">
+        पूरी Class
+      </option>
+
+      <option value="student">
+        Specific Student
+      </option>
+
+    </select>
+
+
+    <div
+      id="${prefix}TargetExtra"
+    ></div>
+
+  `;
+
+}
+
+
+/* =========================================================
+   TARGET CHANGED
+========================================================= */
+
+window.targetChanged = async function(prefix){
+
+  const type =
+    $(
+      prefix +
+      "TargetType"
+    ).value;
+
+
+  const box =
+    $(
+      prefix +
+      "TargetExtra"
+    );
+
+
+  if(type === "all"){
+
+    box.innerHTML = "";
+
+    return;
+
+  }
+
+
+  if(type === "class"){
+
+    box.innerHTML = `
+
+      <div class="grid">
+
+        <div>
+
+          <label>
+            Class
+          </label>
+
+          <input
+            id="${prefix}Class"
+            placeholder="5"
+          >
+
+        </div>
+
+
+        <div>
+
+          <label>
+            Section
+          </label>
+
+          <input
+            id="${prefix}Section"
+            placeholder="A"
+          >
+
+        </div>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  if(type === "student"){
+
+    box.innerHTML =
+      "Students loading...";
+
+
+    try{
+
+      const snap =
+        await getDocs(
+          collection(
+            db,
+            "users"
+          )
+        );
+
+
+      let options = "";
+
+
+      snap.forEach(item=>{
+
+        const student =
+          item.data();
+
+
+        options += `
+
+          <option
+            value="${item.id}"
+          >
+
+            ${escapeHTML(
+              student.name ||
+              student.email ||
+              item.id
+            )}
+
+            —
+
+            ${escapeHTML(
+              student.class ||
+              "-"
+            )}
+
+            -
+
+            ${escapeHTML(
+              student.section ||
+              "-"
+            )}
+
+          </option>
+
+        `;
+
+      });
+
+
+      box.innerHTML = `
+
+        <label>
+          Student
+        </label>
+
+        <select
+          id="${prefix}Student"
+        >
+
+          ${options}
+
+        </select>
+
+      `;
+
+    }catch(error){
+
+      box.innerHTML =
+        error.message;
+
+    }
+
+  }
+
+};
+
+
+/* =========================================================
+   ADMIN HOMEWORK
+========================================================= */
+
+async function renderAdminHomework(){
+
+  renderHeader(
+    "Admin • Homework"
+  );
+
+
+  $("content").innerHTML = `
+
+    <div class="card">
+
+      <h2>
+        📚 Homework भेजें
+      </h2>
+
+
+      ${targetHTML("hw")}
+
+
+      <label>
+        Subject
+      </label>
+
+      <input
+        id="hwSubject"
+        placeholder="Mathematics"
+      >
+
+
+      <label>
+        Homework Title
+      </label>
+
+      <input
+        id="hwTitle"
+        placeholder="Chapter 5 Homework"
+      >
+
+
+      <label>
+        Description
+      </label>
+
+      <textarea
+        id="hwDescription"
+        rows="5"
+        placeholder="Homework details..."
+      ></textarea>
+
+
+      <label>
+        Due Date
+      </label>
+
+      <input
+        id="hwDueDate"
+        type="date"
+      >
+
+
+      <button
+        class="btn green"
+        onclick="sendHomework()"
+      >
+        📤 Send Homework
+      </button>
+
+    </div>
+
+
+    <div
+      class="card"
+      id="adminHomeworkList"
+    >
+      Loading...
+    </div>
+
+
+    ${renderNav()}
+
+  `;
+
+
+  await targetChanged("hw");
+
+  await loadAdminHomework();
+
+}
+
+
+/* =========================================================
+   SEND HOMEWORK
+========================================================= */
+
+window.sendHomework = async function(){
+
+  try{
+
+    const type =
+      $("hwTargetType").value;
+
+
+    const data = {
+
+      targetType:
+        type,
+
+      subject:
+        $("hwSubject").value.trim(),
+
+      title:
+        $("hwTitle").value.trim(),
+
+      description:
+        $("hwDescription").value.trim(),
+
+      dueDate:
+        $("hwDueDate").value,
+
+      createdBy:
+        currentUser.uid,
+
+      createdAt:
+        serverTimestamp()
+
+    };
+
+
+    if(
+      !data.title
+    ){
+
+      alert(
+        "Homework Title डालें"
+      );
+
+      return;
+
+    }
+
+
+    if(type === "class"){
+
+      data.targetClass =
+        $("hwClass")
+        .value
+        .trim();
+
+      data.targetSection =
+        $("hwSection")
+        .value
+        .trim() ||
+        "all";
+
+
+      if(!data.targetClass){
+
+        alert(
+          "Class डालें"
+        );
+
+        return;
+
+      }
+
+    }
+
+
+    if(type === "student"){
+
+      data.targetStudentId =
+        $("hwStudent").value;
+
+    }
+
+
+    await addDoc(
+      collection(
+        db,
+        "homework"
+      ),
+      data
+    );
+
+
+    alert(
+      "✅ Homework successfully भेज दिया गया!"
+    );
+
+
+    currentPage =
+      "homework";
+
+    await render();
+
+
+  }catch(error){
+
+    alert(
+      "Error: " +
+      error.message
+    );
+
+  }
+
+};
+
+
+/* =========================================================
+   ADMIN HOMEWORK LIST
+========================================================= */
+
+async function loadAdminHomework(){
+
+  const box =
+    $("adminHomeworkList");
+
+
+  const snap =
+    await getDocs(
+      collection(
+        db,
+        "homework"
+      )
+    );
+
+
+  if(!snap.size){
+
+    box.innerHTML = `
+
+      <h3>
+        Recent Homework
+      </h3>
+
+      <p class="muted">
+        अभी कोई homework नहीं है।
+      </p>
+
+    `;
+
+    return;
+
+  }
+
+
+  let html = `
+
+    <h3>
+      Recent Homework
+    </h3>
+
+  `;
+
+
+  snap.forEach(item=>{
+
+    const data =
+      item.data();
+
+
+    html += `
+
+      <div class="item">
+
+        <span class="badge">
+          ${escapeHTML(
+            data.targetType
+          )}
+        </span>
+
+        <h3>
+          ${escapeHTML(
+            data.title
+          )}
+        </h3>
+
+        <p>
+          ${escapeHTML(
+            data.description
+          )}
+        </p>
+
+        <p class="muted">
+
+          Subject:
+          ${escapeHTML(
+            data.subject ||
+            "-"
+          )}
+
+          <br>
+
+          Due:
+          ${escapeHTML(
+            data.dueDate ||
+            "-"
+          )}
+
+        </p>
+
+
+        <button
+          class="btn red"
+          onclick="deleteRecord(
+            'homework',
+            '${item.id}'
+          )"
+        >
+          Delete
+        </button>
+
+      </div>
+
+    `;
+
+  });
+
+
+  box.innerHTML =
+    html;
+
+}
+
+
+/* =========================================================
+   ADMIN NOTIFICATION
+========================================================= */
+
+async function renderAdminNotifications(){
+
+  renderHeader(
+    "Admin • Notifications"
+  );
+
+
+  $("content").innerHTML = `
+
+    <div class="card">
+
+      <h2>
+        🔔 Notification भेजें
+      </h2>
+
+
+      ${targetHTML("nt")}
+
+
+      <label>
+        Notification Title
+      </label>
+
+      <input
+        id="ntTitle"
+        placeholder="Important Notice"
+      >
+
+
+      <label>
+        Message
+      </label>
+
+      <textarea
+        id="ntMessage"
+        rows="5"
+        placeholder="Notification message..."
+      ></textarea>
+
+
+      <button
+        class="btn green"
+        onclick="sendNotification()"
+      >
+        📤 Send Notification
+      </button>
+
+    </div>
+
+
+    <div
+      class="card"
+      id="adminNotificationList"
+    >
+      Loading...
+    </div>
+
+
+    ${renderNav()}
+
+  `;
+
+
+  await targetChanged("nt");
+
+  await loadAdminNotifications();
+
+}
+
+
+/* =========================================================
+   SEND NOTIFICATION
+========================================================= */
+
+window.sendNotification = async function(){
+
+  try{
+
+    const type =
+      $("ntTargetType").value;
+
+
+    const data = {
+
+      targetType:
+        type,
+
+      title:
+        $("ntTitle").value.trim(),
+
+      message:
+        $("ntMessage").value.trim(),
+
+      createdBy:
+        currentUser.uid,
+
+      createdAt:
+        serverTimestamp()
+
+    };
+
+
+    if(
+      !data.title ||
+      !data.message
+    ){
+
+      alert(
+        "Title और Message दोनों डालें"
+      );
+
+      return;
+
+    }
+
+
+    if(type === "class"){
+
+      data.targetClass =
+        $("ntClass")
+        .value
+        .trim();
+
+      data.targetSection =
+        $("ntSection")
+        .value
+        .trim() ||
+        "all";
+
+
+      if(!data.targetClass){
+
+        alert(
+          "Class डालें"
+        );
+
+        return;
+
+      }
+
+    }
+
+
+    if(type === "student"){
+
+      data.targetStudentId =
+        $("ntStudent").value;
+
+    }
+
+
+    await addDoc(
+      collection(
+        db,
+        "notifications"
+      ),
+      data
+    );
+
+
+    alert(
+      "✅ Notification successfully भेज दिया गया!"
+    );
+
+
+    currentPage =
+      "notifications";
+
+    await render();
+
+
+  }catch(error){
+
+    alert(
+      "Error: " +
+      error.message
+    );
+
+  }
+
+};
+
+
+/* =========================================================
+   ADMIN NOTIFICATION LIST
+========================================================= */
+
+async function loadAdminNotifications(){
+
+  const box =
+    $("adminNotificationList");
+
+
+  const snap =
+    await getDocs(
+      collection(
+        db,
+        "notifications"
+      )
+    );
+
+
+  if(!snap.size){
+
+    box.innerHTML = `
+
+      <h3>
+        Recent Notifications
+      </h3>
+
+      <p class="muted">
+        अभी कोई notification नहीं है।
+      </p>
+
+    `;
+
+    return;
+
+  }
+
+
+  let html = `
+
+    <h3>
+      Recent Notifications
+    </h3>
+
+  `;
+
+
+  snap.forEach(item=>{
+
+    const data =
+      item.data();
+
+
+    html += `
+
+      <div class="item">
+
+        <span class="badge">
+          🔔
+          ${escapeHTML(
+            data.targetType
+          )}
+        </span>
+
+        <h3>
+          ${escapeHTML(
+            data.title
+          )}
+        </h3>
+
+        <p>
+          ${escapeHTML(
+            data.message
+          )}
+        </p>
+
+        <button
+          class="btn red"
+          onclick="deleteRecord(
+            'notifications',
+            '${item.id}'
+          )"
+        >
+          Delete
+        </button>
+
+      </div>
+
+    `;
+
+  });
+
+
+  box.innerHTML =
+    html;
+
+}
+
+
+/* =========================================================
+   DELETE
+========================================================= */
+
+window.deleteRecord =
+async function(
+  collectionName,
+  documentId
+){
+
+  const yes =
+    confirm(
+      "क्या आप इसे delete करना चाहते हैं?"
+    );
+
+
+  if(!yes){
+
+    return;
+
+  }
+
+
+  try{
+
+    await deleteDoc(
+      doc(
+        db,
+        collectionName,
+        documentId
+      )
+    );
+
+
+    alert(
+      "Deleted successfully"
+    );
+
+
+    await render();
+
+
+  }catch(error){
+
+    alert(
+      error.message
+    );
+
+  }
+
+};
+
+
+/* =========================================================
+   INITIAL PAGE
+========================================================= */
+
+</script>
+
+</body>
+</html>
