@@ -1,0 +1,1970 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#ff7043">
+<title>Hela Full Board</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f5f6fa;
+  color:#293241;
+}
+
+button,input,textarea,select{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+/* ================= LOGIN ================= */
+
+#loginScreen{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:linear-gradient(135deg,#ff7043,#ffc107);
+}
+
+.login-box{
+  width:100%;
+  max-width:520px;
+  background:#fff;
+  border-radius:35px;
+  padding:35px 28px;
+  text-align:center;
+  box-shadow:0 20px 60px rgba(0,0,0,.25);
+}
+
+.logo{
+  width:120px;
+  height:120px;
+  margin:0 auto 20px;
+  border-radius:30px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#ff7043,#ffc107);
+  color:#fff;
+  font-size:65px;
+}
+
+.login-box h1{
+  font-size:38px;
+  margin-bottom:8px;
+}
+
+.subtitle{
+  color:#777;
+  font-size:18px;
+  margin-bottom:25px;
+}
+
+.input{
+  width:100%;
+  padding:16px;
+  margin:7px 0;
+  border:1px solid #ddd;
+  border-radius:16px;
+  outline:none;
+  background:#fff;
+}
+
+.input:focus{
+  border-color:#ff7043;
+}
+
+.main-btn{
+  width:100%;
+  padding:16px;
+  border:0;
+  border-radius:16px;
+  margin-top:10px;
+  color:white;
+  font-weight:bold;
+  background:linear-gradient(90deg,#ff7043,#ffc107);
+}
+
+.main-btn:disabled{
+  opacity:.6;
+}
+
+.error{
+  color:#d32f2f;
+  margin-top:12px;
+  font-size:14px;
+}
+
+/* ================= APP ================= */
+
+.hidden{
+  display:none !important;
+}
+
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:20;
+  height:65px;
+  background:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 18px;
+  box-shadow:0 3px 15px rgba(0,0,0,.08);
+}
+
+.brand{
+  font-size:21px;
+  font-weight:bold;
+}
+
+.logout-btn{
+  border:0;
+  padding:10px 15px;
+  border-radius:12px;
+  background:#eee;
+}
+
+.hero{
+  color:#fff;
+  padding:30px 20px 38px;
+  border-radius:0 0 35px 35px;
+  background:linear-gradient(135deg,#ff7043,#ffc107);
+}
+
+.hero h2{
+  font-size:28px;
+  margin-bottom:8px;
+}
+
+.hero p{
+  margin-top:7px;
+  font-size:17px;
+}
+
+.container{
+  width:100%;
+  max-width:1100px;
+  margin:auto;
+  padding:18px;
+  padding-bottom:100px;
+}
+
+/* ================= GRID ================= */
+
+.menu-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+
+.menu-card{
+  min-height:130px;
+  border:0;
+  border-radius:18px;
+  background:#fff;
+  box-shadow:0 4px 15px rgba(0,0,0,.10);
+  color:#555;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+
+.menu-icon{
+  font-size:40px;
+  margin-bottom:10px;
+}
+
+.menu-card b{
+  font-size:16px;
+}
+
+/* ================= PANELS ================= */
+
+.panel{
+  margin-top:20px;
+  padding:20px;
+  border-radius:20px;
+  background:#fff;
+  box-shadow:0 4px 15px rgba(0,0,0,.08);
+}
+
+.panel h3{
+  font-size:22px;
+  margin-bottom:15px;
+}
+
+.card{
+  padding:15px;
+  margin:10px 0;
+  border:1px solid #e5e5e5;
+  border-radius:15px;
+  background:#fff;
+}
+
+.card-title{
+  font-size:18px;
+  font-weight:bold;
+  margin-bottom:8px;
+}
+
+.small{
+  color:#777;
+  font-size:13px;
+  line-height:1.6;
+}
+
+.badge{
+  display:inline-block;
+  padding:6px 10px;
+  border-radius:20px;
+  background:#e7f4ff;
+  color:#1683cf;
+  font-size:12px;
+  font-weight:bold;
+  margin-top:5px;
+}
+
+.delete-btn{
+  margin-top:10px;
+  border:0;
+  padding:8px 12px;
+  border-radius:9px;
+  background:#ffebee;
+  color:#d32f2f;
+}
+
+/* ================= BOTTOM NAV ================= */
+
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  z-index:30;
+  height:75px;
+  background:#fff;
+  border-top:1px solid #ddd;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+}
+
+.nav-btn{
+  border:0;
+  background:none;
+  color:#777;
+  font-size:12px;
+  text-align:center;
+}
+
+.nav-icon{
+  display:block;
+  font-size:25px;
+  margin-bottom:3px;
+}
+
+.nav-btn.active{
+  color:#ff7043;
+}
+
+/* ================= MODAL ================= */
+
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:15px;
+  background:rgba(0,0,0,.65);
+}
+
+.modal-box{
+  width:100%;
+  max-width:600px;
+  max-height:90vh;
+  overflow:auto;
+  padding:22px;
+  border-radius:22px;
+  background:#fff;
+}
+
+.modal-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:15px;
+}
+
+.close-btn{
+  width:36px;
+  height:36px;
+  border:0;
+  border-radius:50%;
+  background:#eee;
+  font-size:20px;
+}
+
+/* ================= TOAST ================= */
+
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:95px;
+  z-index:200;
+  transform:translateX(-50%);
+  padding:13px 18px;
+  border-radius:12px;
+  background:#222;
+  color:#fff;
+  box-shadow:0 5px 20px #0004;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:600px){
+
+  .menu-grid{
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+  }
+
+  .menu-card{
+    min-height:115px;
+  }
+
+  .menu-icon{
+    font-size:30px;
+  }
+
+  .menu-card b{
+    font-size:13px;
+  }
+
+  .login-box h1{
+    font-size:31px;
+  }
+
+  .logo{
+    width:105px;
+    height:105px;
+    font-size:55px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =====================================================
+     LOGIN SCREEN
+===================================================== -->
+
+<div id="loginScreen">
+
+  <div class="login-box">
+
+    <div class="logo">H</div>
+
+    <h1>Hela Full Board</h1>
+
+    <div class="subtitle">
+      Student & School Management
+    </div>
+
+    <input
+      id="email"
+      class="input"
+      type="email"
+      placeholder="Email address"
+      autocomplete="email"
+    >
+
+    <input
+      id="password"
+      class="input"
+      type="password"
+      placeholder="Password"
+      autocomplete="current-password"
+    >
+
+    <button
+      id="loginBtn"
+      class="main-btn">
+      Login
+    </button>
+
+    <div id="loginError" class="error"></div>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     MAIN APPLICATION
+===================================================== -->
+
+<div id="app" class="hidden">
+
+  <header class="topbar">
+
+    <div class="brand">
+      Hela Full Board
+    </div>
+
+    <button
+      id="logoutBtn"
+      class="logout-btn">
+      Logout
+    </button>
+
+  </header>
+
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <h2 id="welcomeText">
+      Hi, Student
+    </h2>
+
+    <p id="classText">
+      Class – 3 / A
+    </p>
+
+    <p id="yearText">
+      2026–27
+    </p>
+
+  </section>
+
+
+  <!-- CONTENT -->
+
+  <main class="container">
+
+    <div class="menu-grid">
+
+      <button class="menu-card" data-page="info">
+        <span class="menu-icon">🧑‍💼</span>
+        <b>Info Desk</b>
+      </button>
+
+      <button class="menu-card" data-page="calendar">
+        <span class="menu-icon">🗓️</span>
+        <b>Calendar</b>
+      </button>
+
+      <button class="menu-card" data-page="circular">
+        <span class="menu-icon">📰</span>
+        <b>Circular</b>
+      </button>
+
+      <button class="menu-card" data-page="attendance">
+        <span class="menu-icon">☑️</span>
+        <b>Attendance</b>
+      </button>
+
+      <button class="menu-card" data-page="fees">
+        <span class="menu-icon">🧾</span>
+        <b>Fees</b>
+      </button>
+
+      <button class="menu-card" data-page="homework">
+        <span class="menu-icon">📚</span>
+        <b>Home Work</b>
+      </button>
+
+      <button class="menu-card" data-page="timetable">
+        <span class="menu-icon">⏰</span>
+        <b>Time Table</b>
+      </button>
+
+      <button class="menu-card" data-page="exam">
+        <span class="menu-icon">📝</span>
+        <b>Exam Schedule</b>
+      </button>
+
+      <button class="menu-card" data-page="results">
+        <span class="menu-icon">📊</span>
+        <b>Results</b>
+      </button>
+
+    </div>
+
+
+    <div id="pageContent"></div>
+
+  </main>
+
+
+  <!-- BOTTOM NAV -->
+
+  <nav class="bottom-nav">
+
+    <button
+      class="nav-btn active"
+      data-page="home">
+
+      <span class="nav-icon">⌂</span>
+      Home
+
+    </button>
+
+    <button
+      class="nav-btn"
+      data-page="notifications">
+
+      <span class="nav-icon">🔔</span>
+      Notification
+
+    </button>
+
+    <button
+      class="nav-btn"
+      data-page="profile">
+
+      <span class="nav-icon">♙</span>
+      Profile
+
+    </button>
+
+    <button
+      class="nav-btn"
+      data-page="settings">
+
+      <span class="nav-icon">⚙️</span>
+      Settings
+
+    </button>
+
+  </nav>
+
+</div>
+
+
+<!-- =====================================================
+     MODAL
+===================================================== -->
+
+<div id="modal" class="modal hidden">
+
+  <div class="modal-box">
+
+    <div class="modal-head">
+
+      <h3 id="modalTitle">
+        Add
+      </h3>
+
+      <button
+        id="closeModal"
+        class="close-btn">
+        ×
+      </button>
+
+    </div>
+
+    <div id="modalContent"></div>
+
+  </div>
+
+</div>
+
+
+<div id="toast" class="toast hidden"></div>
+
+
+<!-- =====================================================
+     FIREBASE + APPLICATION
+===================================================== -->
+
+<script type="module">
+
+/* =====================================================
+   FIREBASE IMPORTS
+===================================================== */
+
+import {
+  initializeApp
+}
+from
+"https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+
+
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut
+}
+from
+"https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+
+
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  setDoc,
+  collection,
+  getDocs,
+  addDoc,
+  deleteDoc,
+  serverTimestamp,
+  query,
+  orderBy,
+  limit
+}
+from
+"https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
+
+/* =====================================================
+   YOUR FIREBASE CONFIG
+===================================================== */
+
+const firebaseConfig = {
+
+  apiKey:
+  "AIzaSyDescelmyDH66voxzjVRZBug4JqHS6ZIuc",
+
+  authDomain:
+  "tyty-5f65b.firebaseapp.com",
+
+  projectId:
+  "tyty-5f65b",
+
+  storageBucket:
+  "tyty-5f65b.firebasestorage.app",
+
+  messagingSenderId:
+  "686305196099",
+
+  appId:
+  "1:686305196099:web:f074e00910490b8b4efcf6",
+
+  measurementId:
+  "G-3XM0EXZM99"
+
+};
+
+
+/* =====================================================
+   FIREBASE INITIALIZE
+===================================================== */
+
+const firebaseApp =
+  initializeApp(firebaseConfig);
+
+const auth =
+  getAuth(firebaseApp);
+
+const db =
+  getFirestore(firebaseApp);
+
+
+/* =====================================================
+   GLOBAL VARIABLES
+===================================================== */
+
+let currentUser = null;
+
+let userData = {};
+
+let adminMode = false;
+
+
+/* =====================================================
+   SHORTCUT
+===================================================== */
+
+const $ = id =>
+  document.getElementById(id);
+
+
+/* =====================================================
+   HTML ESCAPE
+===================================================== */
+
+function safe(value){
+
+  return String(value ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+function showToast(message){
+
+  $("toast").textContent =
+    message;
+
+  $("toast").classList.remove(
+    "hidden"
+  );
+
+  setTimeout(()=>{
+
+    $("toast").classList.add(
+      "hidden"
+    );
+
+  },2500);
+
+}
+
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+function openModal(title,html){
+
+  $("modalTitle").textContent =
+    title;
+
+  $("modalContent").innerHTML =
+    html;
+
+  $("modal").classList.remove(
+    "hidden"
+  );
+
+}
+
+
+$("closeModal").onclick = ()=>{
+
+  $("modal").classList.add(
+    "hidden"
+  );
+
+};
+
+
+$("modal").addEventListener(
+  "click",
+  event=>{
+
+    if(
+      event.target === $("modal")
+    ){
+
+      $("modal").classList.add(
+        "hidden"
+      );
+
+    }
+
+  }
+);
+
+
+/* =====================================================
+   LOGIN
+===================================================== */
+
+async function loginUser(){
+
+  const email =
+    $("email").value.trim();
+
+  const password =
+    $("password").value;
+
+  $("loginError").textContent =
+    "";
+
+
+  if(!email || !password){
+
+    $("loginError").textContent =
+      "Email और Password दोनों लिखो।";
+
+    return;
+
+  }
+
+
+  $("loginBtn").disabled =
+    true;
+
+  $("loginBtn").textContent =
+    "Logging in...";
+
+
+  try{
+
+    await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+
+  }
+
+  catch(error){
+
+    console.error(error);
+
+    $("loginError").textContent =
+      "Login failed: " +
+      error.message;
+
+  }
+
+
+  $("loginBtn").disabled =
+    false;
+
+  $("loginBtn").textContent =
+    "Login";
+
+}
+
+
+$("loginBtn").onclick =
+  loginUser;
+
+
+$("password").addEventListener(
+  "keydown",
+  event=>{
+
+    if(event.key === "Enter"){
+
+      loginUser();
+
+    }
+
+  }
+);
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+$("logoutBtn").onclick =
+  async ()=>{
+
+    await signOut(auth);
+
+  };
+
+
+/* =====================================================
+   LOAD USER
+===================================================== */
+
+async function loadUser(){
+
+  const userRef =
+    doc(
+      db,
+      "users",
+      currentUser.uid
+    );
+
+
+  const snapshot =
+    await getDoc(userRef);
+
+
+  if(snapshot.exists()){
+
+    userData =
+      snapshot.data();
+
+  }
+
+  else{
+
+    userData = {
+
+      name:
+        currentUser.email
+        .split("@")[0],
+
+      email:
+        currentUser.email,
+
+      class:
+        "3",
+
+      section:
+        "A",
+
+      year:
+        "2026-27",
+
+      role:
+        "student"
+
+    };
+
+
+    await setDoc(
+      userRef,
+      {
+        ...userData,
+        createdAt:
+          serverTimestamp()
+      }
+    );
+
+  }
+
+
+  adminMode =
+    userData.role === "admin";
+
+
+  $("welcomeText").textContent =
+    "Hi, " +
+    (userData.name || "Student");
+
+
+  $("classText").textContent =
+    "Class – " +
+    (userData.class || "3") +
+    (
+      userData.section
+      ?
+      " / " + userData.section
+      :
+      ""
+    );
+
+
+  $("yearText").textContent =
+    userData.year ||
+    "2026–27";
+
+}
+
+
+/* =====================================================
+   AUTH STATE
+===================================================== */
+
+onAuthStateChanged(
+  auth,
+  async user=>{
+
+    currentUser =
+      user;
+
+
+    if(!user){
+
+      $("loginScreen")
+        .classList.remove("hidden");
+
+      $("app")
+        .classList.add("hidden");
+
+      return;
+
+    }
+
+
+    try{
+
+      await loadUser();
+
+      $("loginScreen")
+        .classList.add("hidden");
+
+      $("app")
+        .classList.remove("hidden");
+
+      showHome();
+
+    }
+
+    catch(error){
+
+      console.error(error);
+
+      $("loginScreen")
+        .classList.add("hidden");
+
+      $("app")
+        .classList.remove("hidden");
+
+      showHome();
+
+      showToast(
+        "Firebase profile error"
+      );
+
+    }
+
+  }
+);
+
+
+/* =====================================================
+   HOME
+===================================================== */
+
+function showHome(){
+
+  $("pageContent").innerHTML = `
+
+    <div class="panel">
+
+      <h3>
+        Welcome to Hela Full Board
+      </h3>
+
+      <p class="small">
+        Student & School Management System
+      </p>
+
+      <span class="badge">
+        ${adminMode ? "ADMIN" : "STUDENT"}
+      </span>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   FIRESTORE COLLECTION
+===================================================== */
+
+async function getCollectionData(
+  collectionName
+){
+
+  try{
+
+    const q =
+      query(
+        collection(
+          db,
+          collectionName
+        ),
+        orderBy(
+          "createdAt",
+          "desc"
+        ),
+        limit(50)
+      );
+
+
+    const snapshot =
+      await getDocs(q);
+
+
+    return snapshot.docs.map(
+      item=>({
+
+        id:item.id,
+        ...item.data()
+
+      })
+    );
+
+  }
+
+  catch(error){
+
+    const snapshot =
+      await getDocs(
+        collection(
+          db,
+          collectionName
+        )
+      );
+
+
+    return snapshot.docs.map(
+      item=>({
+
+        id:item.id,
+        ...item.data()
+
+      })
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   GENERIC LIST PAGE
+===================================================== */
+
+async function openListPage(
+  title,
+  collectionName,
+  fields
+){
+
+  $("pageContent").innerHTML = `
+
+    <div class="panel">
+
+      <h3>
+        ${safe(title)}
+      </h3>
+
+      <div id="firebaseList">
+        Loading...
+      </div>
+
+      ${
+        adminMode
+        ?
+        `
+        <button
+          id="addDataBtn"
+          class="main-btn">
+          + Add ${safe(title)}
+        </button>
+        `
+        :
+        ""
+      }
+
+    </div>
+
+  `;
+
+
+  if(adminMode){
+
+    $("addDataBtn").onclick =
+      ()=>showAddForm(
+        title,
+        collectionName,
+        fields
+      );
+
+  }
+
+
+  await renderCollection(
+    title,
+    collectionName
+  );
+
+}
+
+
+/* =====================================================
+   RENDER FIRESTORE DATA
+===================================================== */
+
+async function renderCollection(
+  title,
+  collectionName
+){
+
+  const list =
+    $("firebaseList");
+
+
+  try{
+
+    const data =
+      await getCollectionData(
+        collectionName
+      );
+
+
+    if(!data.length){
+
+      list.innerHTML = `
+
+        <div class="card">
+
+          <p class="small">
+            अभी कोई data available नहीं है।
+          </p>
+
+        </div>
+
+      `;
+
+      return;
+
+    }
+
+
+    list.innerHTML =
+      data.map(item=>{
+
+        const mainTitle =
+          item.title ||
+          item.subject ||
+          item.name ||
+          item.exam ||
+          "Item";
+
+
+        const description =
+          item.description ||
+          item.message ||
+          item.text ||
+          "";
+
+
+        return `
+
+          <div class="card">
+
+            <div class="card-title">
+              ${safe(mainTitle)}
+            </div>
+
+            ${
+              item.date
+              ?
+              `<div>
+                📅 ${safe(item.date)}
+              </div>`
+              :
+              ""
+            }
+
+            ${
+              item.time
+              ?
+              `<div>
+                ⏰ ${safe(item.time)}
+              </div>`
+              :
+              ""
+            }
+
+            ${
+              item.amount
+              ?
+              `<div>
+                💰 ₹${safe(item.amount)}
+              </div>`
+              :
+              ""
+            }
+
+            ${
+              item.status
+              ?
+              `<div>
+                Status:
+                ${safe(item.status)}
+              </div>`
+              :
+              ""
+            }
+
+            ${
+              item.marks
+              ?
+              `<div>
+                Marks:
+                ${safe(item.marks)}
+              </div>`
+              :
+              ""
+            }
+
+            ${
+              description
+              ?
+              `<p class="small">
+                ${safe(description)}
+              </p>`
+              :
+              ""
+            }
+
+            ${
+              item.teacher
+              ?
+              `<p class="small">
+                Teacher:
+                ${safe(item.teacher)}
+              </p>`
+              :
+              ""
+            }
+
+            ${
+              item.by
+              ?
+              `<p class="small">
+                By:
+                ${safe(item.by)}
+              </p>`
+              :
+              ""
+            }
+
+            ${
+              adminMode
+              ?
+              `
+              <button
+                class="delete-btn"
+                onclick="
+                window.deleteFirebaseItem(
+                  '${collectionName}',
+                  '${item.id}',
+                  '${title}'
+                )">
+                Delete
+              </button>
+              `
+              :
+              ""
+            }
+
+          </div>
+
+        `;
+
+      }).join("");
+
+  }
+
+  catch(error){
+
+    list.innerHTML = `
+
+      <div class="card">
+
+        <p class="error">
+          Firebase Error:
+          ${safe(error.message)}
+        </p>
+
+      </div>
+
+    `;
+
+  }
+
+}
+
+
+/* =====================================================
+   DELETE FIREBASE DATA
+===================================================== */
+
+window.deleteFirebaseItem =
+async function(
+  collectionName,
+  id,
+  title
+){
+
+  const confirmDelete =
+    confirm(
+      "क्या आप इसे Delete करना चाहते हैं?"
+    );
+
+
+  if(!confirmDelete)
+    return;
+
+
+  try{
+
+    await deleteDoc(
+      doc(
+        db,
+        collectionName,
+        id
+      )
+    );
+
+
+    showToast(
+      "Data Delete हो गया"
+    );
+
+
+    await renderCollection(
+      title,
+      collectionName
+    );
+
+  }
+
+  catch(error){
+
+    showToast(
+      "Delete Error: " +
+      error.message
+    );
+
+  }
+
+};
+
+
+/* =====================================================
+   ADD FORM
+===================================================== */
+
+function showAddForm(
+  title,
+  collectionName,
+  fields
+){
+
+  let html = "";
+
+
+  fields.forEach(field=>{
+
+    html += `
+
+      <input
+        id="field_${field}"
+        class="input"
+        placeholder="${field}">
+
+    `;
+
+  });
+
+
+  html += `
+
+    <button
+      id="saveFirebaseBtn"
+      class="main-btn">
+
+      Save
+
+    </button>
+
+  `;
+
+
+  openModal(
+    "Add " + title,
+    html
+  );
+
+
+  $("saveFirebaseBtn").onclick =
+    async ()=>{
+
+      const data = {};
+
+
+      fields.forEach(field=>{
+
+        data[field] =
+          $("field_"+field)
+          .value
+          .trim();
+
+      });
+
+
+      data.createdAt =
+        serverTimestamp();
+
+
+      try{
+
+        await addDoc(
+          collection(
+            db,
+            collectionName
+          ),
+          data
+        );
+
+
+        $("modal")
+          .classList.add(
+            "hidden"
+          );
+
+
+        showToast(
+          "Firebase में Save हो गया"
+        );
+
+
+        await renderCollection(
+          title,
+          collectionName
+        );
+
+      }
+
+      catch(error){
+
+        showToast(
+          "Save Error: " +
+          error.message
+        );
+
+      }
+
+    };
+
+}
+
+
+/* =====================================================
+   INFORMATION
+===================================================== */
+
+function infoPage(){
+
+  openListPage(
+    "Info Desk",
+    "info",
+    [
+      "title",
+      "description",
+      "phone",
+      "address"
+    ]
+  );
+
+}
+
+
+/* =====================================================
+   CALENDAR
+===================================================== */
+
+function calendarPage(){
+
+  openListPage(
+    "Calendar",
+    "calendar",
+    [
+      "title",
+      "date",
+      "description"
+    ]
+  );
+
+}
+
+
+/* =====================================================
+   CIRCULAR
+===================================================== */
+
+function circularPage(){
+
+  openListPage(
+    "Circular",
+    "circular",
+    [
+      "title",
+      "date",
+      "description"
+    ]
+  );
+
+}
+
+
+/* =====================================================
+   ATTENDANCE
+===================================================== */
+
+function attendancePage(){
+
+  openListPage(
+    "Attendance",
+    "attendance",
+    [
+      "studentEmail",
+      "date",
+      "status",
+      "subject"
+    ]
+  );
+
+}
+
+
+/* =====================================================
+   FEES
+===================================================== */
+
+function feesPage(){
+
+  openListPage(
+    "Fees",
+    "fees",
+    [
+      "studentEmail",
+      "title",
+      "amount",
+      "status",
+      "dueDate"
+    ]
+  );
+
+}
+
+
+/* =====================================================
+   HOMEWORK
+===================================================== */
+
+function homeworkPage(){
+
+  openListPage(
+    "Home Work",
+    "homework",
+    [
+      "subject",
+      "title",
+      "description",
+      "studentEmail",
+      "submitOn"
+    ]
+  );
+
+}
+
+
+/* =====================================================
+   TIME TABLE
+===================================================== */
+
+function timetablePage(){
+
+  openListPage(
+    "Time Table",
+    "timetable",
+    [
+      "day",
+      "time",
+      "subject",
+      "teacher"
+    ]
+  );
+
+}
+
+
+/* =====================================================
+   EXAM
+===================================================== */
+
+function examPage(){
+
+  openListPage(
+    "Exam Schedule",
+    "exam",
+    [
+      "title",
+      "date",
+      "subject",
+      "time",
+      "room"
+    ]
+  );
+
+}
+
+
+/* =====================================================
+   RESULTS
+===================================================== */
+
+function resultsPage(){
+
+  openListPage(
+    "Results",
+    "results",
+    [
+      "studentEmail",
+      "exam",
+      "subject",
+      "marks",
+      "grade"
+    ]
+  );
+
+}
+
+
+/* =====================================================
+   NOTIFICATIONS
+===================================================== */
+
+function notificationPage(){
+
+  openListPage(
+    "Notifications",
+    "notifications",
+    [
+      "title",
+      "message",
+      "date"
+    ]
+  );
+
+}
+
+
+/* =====================================================
+   PROFILE
+===================================================== */
+
+function profilePage(){
+
+  $("pageContent").innerHTML = `
+
+    <div class="panel">
+
+      <h3>
+        Profile
+      </h3>
+
+      <div class="card">
+
+        <div class="card-title">
+          ${safe(
+            userData.name ||
+            "Student"
+          )}
+        </div>
+
+        <p>
+          Email:
+          ${safe(
+            currentUser.email
+          )}
+        </p>
+
+        <p>
+          Class:
+          ${safe(
+            userData.class ||
+            "3"
+          )}
+          /
+          ${safe(
+            userData.section ||
+            "A"
+          )}
+        </p>
+
+        <p>
+          Academic Year:
+          ${safe(
+            userData.year ||
+            "2026-27"
+          )}
+        </p>
+
+        <p>
+          Role:
+          ${safe(
+            userData.role ||
+            "student"
+          )}
+        </p>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   SETTINGS
+===================================================== */
+
+function settingsPage(){
+
+  $("pageContent").innerHTML = `
+
+    <div class="panel">
+
+      <h3>
+        Settings
+      </h3>
+
+      <div class="card">
+
+        <p>
+          Logged in as:
+        </p>
+
+        <p class="small">
+          ${safe(
+            currentUser.email
+          )}
+        </p>
+
+      </div>
+
+      <button
+        id="settingsLogout"
+        class="main-btn">
+
+        Logout
+
+      </button>
+
+    </div>
+
+  `;
+
+
+  $("settingsLogout").onclick =
+    ()=>signOut(auth);
+
+}
+
+
+/* =====================================================
+   PAGE ROUTER
+===================================================== */
+
+const pages = {
+
+  home:
+    showHome,
+
+  info:
+    infoPage,
+
+  calendar:
+    calendarPage,
+
+  circular:
+    circularPage,
+
+  attendance:
+    attendancePage,
+
+  fees:
+    feesPage,
+
+  homework:
+    homeworkPage,
+
+  timetable:
+    timetablePage,
+
+  exam:
+    examPage,
+
+  results:
+    resultsPage,
+
+  notifications:
+    notificationPage,
+
+  profile:
+    profilePage,
+
+  settings:
+    settingsPage
+
+};
+
+
+/* =====================================================
+   ALL NAVIGATION BUTTONS
+===================================================== */
+
+document
+  .querySelectorAll(
+    "[data-page]"
+  )
+  .forEach(button=>{
+
+    button.addEventListener(
+      "click",
+      ()=>{
+
+        const pageName =
+          button.dataset.page;
+
+
+        document
+          .querySelectorAll(
+            ".nav-btn"
+          )
+          .forEach(nav=>{
+
+            nav.classList.toggle(
+              "active",
+              nav.dataset.page ===
+              pageName
+            );
+
+          });
+
+
+        if(
+          pages[pageName]
+        ){
+
+          pages[pageName]();
+
+        }
+
+
+        window.scrollTo({
+          top:0,
+          behavior:"smooth"
+        });
+
+      }
+    );
+
+  });
+
+</script>
+
+</body>
+</html>
