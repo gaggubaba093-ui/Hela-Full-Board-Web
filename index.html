@@ -1,0 +1,2218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ff7548">
+<title>Hela Full Board</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f7f7fb;
+  color:#252b38;
+  min-height:100vh;
+}
+
+button,input,textarea,select{
+  font:inherit;
+}
+
+button{
+  border:0;
+  cursor:pointer;
+}
+
+/* LOGIN */
+
+#loginPage{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:linear-gradient(135deg,#ff7647,#ffc51b);
+}
+
+.loginBox{
+  width:100%;
+  max-width:410px;
+  background:#fff;
+  border-radius:28px;
+  padding:30px 25px;
+  box-shadow:0 20px 60px #0003;
+}
+
+.logoCircle{
+  width:75px;
+  height:75px;
+  margin:auto;
+  border-radius:22px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-size:38px;
+  font-weight:800;
+  background:linear-gradient(135deg,#ff7043,#ffc107);
+}
+
+.loginBox h1{
+  text-align:center;
+  margin-top:16px;
+  font-size:28px;
+}
+
+.loginBox p{
+  text-align:center;
+  color:#777;
+  margin:8px 0 25px;
+}
+
+.input{
+  width:100%;
+  padding:15px;
+  border:1px solid #ddd;
+  border-radius:13px;
+  margin-bottom:12px;
+  outline:none;
+}
+
+.input:focus{
+  border-color:#ff7650;
+}
+
+.loginBtn{
+  width:100%;
+  padding:15px;
+  border-radius:14px;
+  color:white;
+  font-weight:700;
+  background:linear-gradient(90deg,#ff7043,#ffb300);
+}
+
+#error{
+  color:#e53935;
+  text-align:center;
+  margin-top:12px;
+}
+
+/* APP */
+
+#app{
+  display:none;
+  min-height:100vh;
+  padding-bottom:82px;
+}
+
+/* HEADER */
+
+.hero{
+  background:linear-gradient(120deg,#ff7043,#ffb52b);
+  color:#fff;
+  padding:35px 22px 28px;
+  border-radius:0 0 38px 38px;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+  width:180px;
+  height:180px;
+  right:-70px;
+  top:-70px;
+  background:#ffffff20;
+  border-radius:50%;
+}
+
+.hero h1{
+  font-size:25px;
+  position:relative;
+  z-index:2;
+}
+
+.hero .class{
+  font-size:18px;
+  font-weight:600;
+  margin-top:8px;
+  position:relative;
+  z-index:2;
+}
+
+.hero .year{
+  font-size:17px;
+  margin-top:10px;
+  position:relative;
+  z-index:2;
+}
+
+.heroCard{
+  background:#fff;
+  color:#282d39;
+  margin-top:30px;
+  padding:19px;
+  border-radius:17px;
+  position:relative;
+  z-index:2;
+  box-shadow:0 8px 25px #0002;
+}
+
+.heroCard small{
+  color:#777;
+}
+
+.heroCard strong{
+  display:block;
+  font-size:20px;
+  margin-top:8px;
+}
+
+/* CONTENT */
+
+.section{
+  padding:22px 18px;
+}
+
+.sectionTitle{
+  font-size:23px;
+  font-weight:800;
+  margin-bottom:15px;
+}
+
+.menuGrid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+
+.menuCard{
+  background:#fff;
+  min-height:145px;
+  border-radius:14px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:12px 5px;
+  box-shadow:0 3px 12px #00000012;
+  transition:.15s;
+}
+
+.menuCard:active{
+  transform:scale(.96);
+}
+
+.icon{
+  font-size:45px;
+  margin-bottom:10px;
+}
+
+.menuCard span{
+  font-size:17px;
+  font-weight:700;
+  color:#656565;
+}
+
+/* PAGES */
+
+.page{
+  display:none;
+}
+
+.page.active{
+  display:block;
+}
+
+.pageHeader{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  padding:18px;
+  background:#fff;
+  box-shadow:0 2px 10px #00000012;
+  position:sticky;
+  top:0;
+  z-index:20;
+}
+
+.back{
+  font-size:30px;
+  background:none;
+}
+
+.pageHeader h2{
+  font-size:24px;
+}
+
+/* HOMEWORK */
+
+.homeworkCard{
+  background:#fff;
+  margin-bottom:14px;
+  padding:18px;
+  border-radius:14px;
+  box-shadow:0 3px 12px #00000012;
+  border-left:6px solid #13b85a;
+}
+
+.homeworkTop{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.subject{
+  font-size:22px;
+  font-weight:800;
+}
+
+.status{
+  background:#c7e7fb;
+  color:#3294d4;
+  padding:8px 13px;
+  border-radius:9px;
+  font-weight:700;
+}
+
+.homeworkMeta{
+  margin-top:13px;
+  color:#555;
+  font-weight:600;
+}
+
+.homeworkBody{
+  margin-top:16px;
+  padding:15px;
+  background:#fafafa;
+  border-radius:12px;
+}
+
+.teacher{
+  margin-top:10px;
+  color:#555;
+}
+
+.remark{
+  margin-top:15px;
+  padding:15px;
+  background:#fff8ed;
+  border-radius:10px;
+}
+
+/* LIST */
+
+.listCard{
+  background:#fff;
+  margin:12px 18px;
+  padding:18px;
+  border-radius:15px;
+  box-shadow:0 3px 12px #00000010;
+}
+
+.listCard h3{
+  margin-bottom:9px;
+}
+
+.row{
+  display:flex;
+  justify-content:space-between;
+  padding:11px 0;
+  border-bottom:1px solid #eee;
+}
+
+.row:last-child{
+  border-bottom:0;
+}
+
+/* ADMIN */
+
+.adminBox{
+  background:#fff;
+  margin:18px;
+  padding:20px;
+  border-radius:18px;
+  box-shadow:0 3px 15px #0001;
+}
+
+.adminBox h3{
+  margin-bottom:15px;
+}
+
+.formInput{
+  width:100%;
+  padding:13px;
+  margin:7px 0;
+  border:1px solid #ddd;
+  border-radius:10px;
+}
+
+.orangeBtn{
+  background:linear-gradient(90deg,#ff7043,#ffb300);
+  color:#fff;
+  padding:13px 18px;
+  border-radius:11px;
+  font-weight:700;
+  margin-top:8px;
+}
+
+/* PROFILE */
+
+.profileCard{
+  margin:20px;
+  background:#fff;
+  border-radius:20px;
+  padding:25px;
+  text-align:center;
+  box-shadow:0 4px 20px #0001;
+}
+
+.profileAvatar{
+  width:85px;
+  height:85px;
+  margin:auto;
+  border-radius:50%;
+  background:linear-gradient(135deg,#ff7043,#ffb300);
+  color:#fff;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:35px;
+  font-weight:bold;
+}
+
+.profileCard h2{
+  margin-top:15px;
+}
+
+/* BOTTOM NAV */
+
+.bottomNav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  height:78px;
+  background:#fff;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  border-top:1px solid #eee;
+  box-shadow:0 -4px 20px #00000010;
+  z-index:100;
+}
+
+.navBtn{
+  background:none;
+  color:#999;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:4px;
+  font-size:13px;
+}
+
+.navIcon{
+  font-size:27px;
+}
+
+.navBtn.active{
+  color:#ff7043;
+  font-weight:700;
+}
+
+.searchFloat{
+  position:fixed;
+  right:20px;
+  bottom:92px;
+  width:62px;
+  height:62px;
+  border-radius:50%;
+  color:#fff;
+  background:#ff7043;
+  font-size:28px;
+  box-shadow:0 7px 20px #0003;
+  z-index:90;
+}
+
+/* DESKTOP */
+
+@media(min-width:800px){
+
+  body{
+    max-width:500px;
+    margin:auto;
+    background:#e9e9ee;
+  }
+
+  #app{
+    background:#f7f7fb;
+    min-height:100vh;
+  }
+
+  .bottomNav{
+    max-width:500px;
+    left:50%;
+    transform:translateX(-50%);
+  }
+
+  .searchFloat{
+    right:calc(50% - 225px);
+  }
+}
+
+/* SMALL PHONE */
+
+@media(max-width:360px){
+
+  .menuGrid{
+    gap:9px;
+  }
+
+  .menuCard{
+    min-height:125px;
+  }
+
+  .menuCard span{
+    font-size:14px;
+  }
+
+  .icon{
+    font-size:37px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN -->
+
+<div id="loginPage">
+
+  <div class="loginBox">
+
+    <div class="logoCircle">H</div>
+
+    <h1>Hela Full Board</h1>
+
+    <p>Student & School Management</p>
+
+    <input
+      id="email"
+      class="input"
+      type="email"
+      placeholder="Email">
+
+    <input
+      id="password"
+      class="input"
+      type="password"
+      placeholder="Password">
+
+    <button
+      id="loginBtn"
+      class="loginBtn">
+      Login
+    </button>
+
+    <div id="error"></div>
+
+  </div>
+
+</div>
+
+
+<!-- APP -->
+
+<div id="app">
+
+  <!-- HOME PAGE -->
+
+  <div id="homePage" class="page active">
+
+    <div class="hero">
+
+      <h1 id="welcomeName">
+        Hi, Student
+      </h1>
+
+      <div
+        id="classText"
+        class="class">
+        Class - Student
+      </div>
+
+      <div class="year">
+        2026–27
+      </div>
+
+      <div class="heroCard">
+
+        <small>Latest Homework</small>
+
+        <strong id="heroHomework">
+          No homework yet
+        </strong>
+
+        <div
+          id="heroTeacher"
+          style="margin-top:8px;color:#777;">
+          Waiting for teacher
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="section">
+
+      <div class="sectionTitle">
+        School Services
+      </div>
+
+      <div class="menuGrid">
+
+        <button
+          class="menuCard"
+          onclick="openPage('info')">
+
+          <div class="icon">👩‍💼</div>
+          <span>Info Desk</span>
+
+        </button>
+
+
+        <button
+          class="menuCard"
+          onclick="openPage('calendar')">
+
+          <div class="icon">📅</div>
+          <span>Calendar</span>
+
+        </button>
+
+
+        <button
+          class="menuCard"
+          onclick="openPage('circular')">
+
+          <div class="icon">📰</div>
+          <span>Circular</span>
+
+        </button>
+
+
+        <button
+          class="menuCard"
+          onclick="openPage('attendance')">
+
+          <div class="icon">📋</div>
+          <span>Attendance</span>
+
+        </button>
+
+
+        <button
+          class="menuCard"
+          onclick="openPage('fees')">
+
+          <div class="icon">🧾</div>
+          <span>Fees</span>
+
+        </button>
+
+
+        <button
+          class="menuCard"
+          onclick="openPage('homework')">
+
+          <div class="icon">📚</div>
+          <span>Home Work</span>
+
+        </button>
+
+
+        <button
+          class="menuCard"
+          onclick="openPage('timetable')">
+
+          <div class="icon">🗓️</div>
+          <span>Time Table</span>
+
+        </button>
+
+
+        <button
+          class="menuCard"
+          onclick="openPage('exam')">
+
+          <div class="icon">📝</div>
+          <span>Exam Schedule</span>
+
+        </button>
+
+
+        <button
+          class="menuCard"
+          onclick="openPage('results')">
+
+          <div class="icon">📊</div>
+          <span>Results</span>
+
+        </button>
+
+
+        <button
+          class="menuCard"
+          onclick="openPage('notices')">
+
+          <div class="icon">📢</div>
+          <span>Notice</span>
+
+        </button>
+
+
+        <button
+          class="menuCard"
+          onclick="openPage('profile')">
+
+          <div class="icon">👤</div>
+          <span>Profile</span>
+
+        </button>
+
+
+        <button
+          class="menuCard"
+          onclick="logout()">
+
+          <div class="icon">🚪</div>
+          <span>Logout</span>
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- GENERIC PAGES -->
+
+  <div id="infoPage" class="page">
+    <div class="pageHeader">
+      <button class="back" onclick="goHome()">‹</button>
+      <h2>Info Desk</h2>
+    </div>
+
+    <div class="listCard">
+      <h3>Hela Full Board</h3>
+      <p>Welcome to the school information desk.</p>
+      <br>
+      <p>For school related information please contact the school administration.</p>
+    </div>
+  </div>
+
+
+  <div id="calendarPage" class="page">
+    <div class="pageHeader">
+      <button class="back" onclick="goHome()">‹</button>
+      <h2>Calendar</h2>
+    </div>
+
+    <div class="listCard">
+      <h3>September 2026</h3>
+      <div class="row">
+        <span>23 September</span>
+        <b>School Day</b>
+      </div>
+      <div class="row">
+        <span>24 September</span>
+        <b>School Day</b>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="circularPage" class="page">
+    <div class="pageHeader">
+      <button class="back" onclick="goHome()">‹</button>
+      <h2>Circular</h2>
+    </div>
+
+    <div id="circularList"></div>
+  </div>
+
+
+  <!-- HOMEWORK -->
+
+  <div id="homeworkPage" class="page">
+
+    <div class="pageHeader">
+
+      <button
+        class="back"
+        onclick="goHome()">
+        ‹
+      </button>
+
+      <h2>Home Work</h2>
+
+    </div>
+
+
+    <div
+      id="homeworkList"
+      style="padding:15px;">
+    </div>
+
+
+    <div
+      id="homeworkAdmin"
+      class="adminBox"
+      style="display:none;">
+
+      <h3>Add Homework</h3>
+
+      <input
+        id="hwSubject"
+        class="formInput"
+        placeholder="Subject">
+
+      <input
+        id="hwTitle"
+        class="formInput"
+        placeholder="Homework title">
+
+      <input
+        id="hwDue"
+        class="formInput"
+        type="date">
+
+      <input
+        id="hwTeacher"
+        class="formInput"
+        placeholder="Teacher name">
+
+      <textarea
+        id="hwText"
+        class="formInput"
+        rows="4"
+        placeholder="Homework details"></textarea>
+
+      <button
+        class="orangeBtn"
+        onclick="addHomework()">
+        Publish Homework
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ATTENDANCE -->
+
+  <div id="attendancePage" class="page">
+
+    <div class="pageHeader">
+      <button class="back" onclick="goHome()">‹</button>
+      <h2>Attendance</h2>
+    </div>
+
+    <div id="attendanceList"></div>
+
+  </div>
+
+
+  <!-- FEES -->
+
+  <div id="feesPage" class="page">
+
+    <div class="pageHeader">
+      <button class="back" onclick="goHome()">‹</button>
+      <h2>Fees</h2>
+    </div>
+
+    <div id="feesList"></div>
+
+  </div>
+
+
+  <!-- TIMETABLE -->
+
+  <div id="timetablePage" class="page">
+
+    <div class="pageHeader">
+      <button class="back" onclick="goHome()">‹</button>
+      <h2>Time Table</h2>
+    </div>
+
+    <div class="listCard">
+
+      <div class="row">
+        <b>Monday</b>
+        <span>Hindi</span>
+      </div>
+
+      <div class="row">
+        <b>Tuesday</b>
+        <span>Maths</span>
+      </div>
+
+      <div class="row">
+        <b>Wednesday</b>
+        <span>English</span>
+      </div>
+
+      <div class="row">
+        <b>Thursday</b>
+        <span>Science</span>
+      </div>
+
+      <div class="row">
+        <b>Friday</b>
+        <span>Social Studies</span>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- EXAM -->
+
+  <div id="examPage" class="page">
+
+    <div class="pageHeader">
+      <button class="back" onclick="goHome()">‹</button>
+      <h2>Exam Schedule</h2>
+    </div>
+
+    <div class="listCard">
+
+      <div class="row">
+        <b>Hindi</b>
+        <span>10 Oct 2026</span>
+      </div>
+
+      <div class="row">
+        <b>Maths</b>
+        <span>12 Oct 2026</span>
+      </div>
+
+      <div class="row">
+        <b>English</b>
+        <span>14 Oct 2026</span>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- RESULTS -->
+
+  <div id="resultsPage" class="page">
+
+    <div class="pageHeader">
+      <button class="back" onclick="goHome()">‹</button>
+      <h2>Results</h2>
+    </div>
+
+    <div id="resultsList"></div>
+
+  </div>
+
+
+  <!-- NOTICES -->
+
+  <div id="noticesPage" class="page">
+
+    <div class="pageHeader">
+      <button class="back" onclick="goHome()">‹</button>
+      <h2>Notifications</h2>
+    </div>
+
+    <div id="noticeList"></div>
+
+  </div>
+
+
+  <!-- PROFILE -->
+
+  <div id="profilePage" class="page">
+
+    <div class="pageHeader">
+      <button class="back" onclick="goHome()">‹</button>
+      <h2>Profile</h2>
+    </div>
+
+    <div class="profileCard">
+
+      <div
+        id="profileAvatar"
+        class="profileAvatar">
+        H
+      </div>
+
+      <h2 id="profileName">
+        Student
+      </h2>
+
+      <p
+        id="profileEmail"
+        style="margin-top:8px;color:#777;">
+      </p>
+
+      <br>
+
+      <div class="row">
+        <b>Class</b>
+        <span id="profileClass">-</span>
+      </div>
+
+      <div class="row">
+        <b>Role</b>
+        <span id="profileRole">-</span>
+      </div>
+
+      <div class="row">
+        <b>Student ID</b>
+        <span id="profileId">-</span>
+      </div>
+
+      <button
+        class="orangeBtn"
+        onclick="logout()">
+        Logout
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- SEARCH BUTTON -->
+
+  <button
+    class="searchFloat"
+    onclick="searchSchool()">
+    🔍
+  </button>
+
+
+  <!-- BOTTOM NAV -->
+
+  <div class="bottomNav">
+
+    <button
+      class="navBtn active"
+      onclick="goHome()">
+
+      <div class="navIcon">⌂</div>
+      <span>Home</span>
+
+    </button>
+
+
+    <button
+      class="navBtn"
+      onclick="openPage('notices')">
+
+      <div class="navIcon">♧</div>
+      <span>Notification</span>
+
+    </button>
+
+
+    <button
+      class="navBtn"
+      onclick="openPage('profile')">
+
+      <div class="navIcon">♙</div>
+      <span>Profile</span>
+
+    </button>
+
+
+    <button
+      class="navBtn"
+      onclick="openPage('info')">
+
+      <div class="navIcon">⚙</div>
+      <span>Settings</span>
+
+    </button>
+
+  </div>
+
+</div>
+
+
+<script type="module">
+
+/* =========================================
+   FIREBASE
+   ========================================= */
+
+import {
+  initializeApp
+}
+from
+"https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+
+import {
+  getAuth,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signOut
+}
+from
+"https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  collection,
+  getDocs,
+  addDoc,
+  query,
+  where,
+  serverTimestamp
+}
+from
+"https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
+
+/* YOUR FIREBASE CONFIG */
+
+const firebaseConfig = {
+
+  apiKey:
+  "AIzaSyDescelmyDH66voxzjVRZBug4JqHS6ZIuc",
+
+  authDomain:
+  "tyty-5f65b.firebaseapp.com",
+
+  projectId:
+  "tyty-5f65b",
+
+  storageBucket:
+  "tyty-5f65b.firebasestorage.app",
+
+  messagingSenderId:
+  "686305196099",
+
+  appId:
+  "1:686305196099:web:f074e00910490b8b4efcf6",
+
+  measurementId:
+  "G-3XM0EXZM99"
+};
+
+
+const firebaseApp =
+initializeApp(firebaseConfig);
+
+const auth =
+getAuth(firebaseApp);
+
+const db =
+getFirestore(firebaseApp);
+
+
+/* GLOBAL DATA */
+
+let currentUser = null;
+let userData = {};
+
+
+/* =========================================
+   LOGIN
+   ========================================= */
+
+document
+.getElementById("loginBtn")
+.addEventListener("click",login);
+
+
+async function login(){
+
+  const email =
+  document.getElementById("email")
+  .value.trim();
+
+  const password =
+  document.getElementById("password")
+  .value;
+
+  const error =
+  document.getElementById("error");
+
+  error.textContent = "";
+
+
+  if(!email || !password){
+
+    error.textContent =
+    "Email और password डालें.";
+
+    return;
+  }
+
+
+  try{
+
+    await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+
+  }
+
+  catch(err){
+
+    console.error(err);
+
+    error.textContent =
+    "Login failed. Email या password check करें.";
+
+  }
+
+}
+
+
+/* ENTER KEY */
+
+document
+.getElementById("password")
+.addEventListener(
+  "keydown",
+  e => {
+
+    if(e.key === "Enter")
+      login();
+
+  }
+);
+
+
+/* =========================================
+   AUTH STATE
+   ========================================= */
+
+onAuthStateChanged(
+  auth,
+  async user => {
+
+    if(!user){
+
+      document
+      .getElementById("loginPage")
+      .style.display = "flex";
+
+      document
+      .getElementById("app")
+      .style.display = "none";
+
+      return;
+    }
+
+
+    currentUser = user;
+
+
+    try{
+
+      const snap =
+      await getDoc(
+        doc(
+          db,
+          "users",
+          user.uid
+        )
+      );
+
+
+      if(snap.exists()){
+
+        userData =
+        snap.data();
+
+      }else{
+
+        userData = {
+
+          name:
+          user.email
+          .split("@")[0],
+
+          email:
+          user.email,
+
+          role:
+          "student",
+
+          class:
+          ""
+
+        };
+
+      }
+
+
+      document
+      .getElementById("loginPage")
+      .style.display = "none";
+
+      document
+      .getElementById("app")
+      .style.display = "block";
+
+
+      updateProfile();
+
+
+      loadLatestHomework();
+
+    }
+
+    catch(err){
+
+      console.error(err);
+
+      alert(
+        "Firebase/Firestore error: "+
+        err.message
+      );
+
+    }
+
+  }
+);
+
+
+/* =========================================
+   PROFILE
+   ========================================= */
+
+function updateProfile(){
+
+  const name =
+  userData.name ||
+  currentUser.email;
+
+
+  document
+  .getElementById("welcomeName")
+  .textContent =
+  "Hi, " + name;
+
+
+  document
+  .getElementById("classText")
+  .textContent =
+  "Class - " +
+  (userData.class || "Student");
+
+
+  document
+  .getElementById("profileName")
+  .textContent =
+  name;
+
+
+  document
+  .getElementById("profileEmail")
+  .textContent =
+  currentUser.email;
+
+
+  document
+  .getElementById("profileClass")
+  .textContent =
+  userData.class || "-";
+
+
+  document
+  .getElementById("profileRole")
+  .textContent =
+  userData.role || "student";
+
+
+  document
+  .getElementById("profileId")
+  .textContent =
+  userData.studentId ||
+  currentUser.uid;
+
+
+  document
+  .getElementById("profileAvatar")
+  .textContent =
+  name.charAt(0).toUpperCase();
+
+}
+
+
+/* =========================================
+   PAGE NAVIGATION
+   ========================================= */
+
+window.openPage =
+async function(page){
+
+  document
+  .querySelectorAll(".page")
+  .forEach(p =>
+    p.classList.remove("active")
+  );
+
+
+  const element =
+  document.getElementById(
+    page + "Page"
+  );
+
+
+  if(element)
+    element.classList.add("active");
+
+
+  if(page === "home")
+    return;
+
+
+  if(page === "homework")
+    loadHomework();
+
+  if(page === "attendance")
+    loadAttendance();
+
+  if(page === "fees")
+    loadFees();
+
+  if(page === "results")
+    loadResults();
+
+  if(page === "notices")
+    loadNotices();
+
+  if(page === "circular")
+    loadNotices();
+
+};
+
+
+window.goHome =
+function(){
+
+  document
+  .querySelectorAll(".page")
+  .forEach(p =>
+    p.classList.remove("active")
+  );
+
+
+  document
+  .getElementById("homePage")
+  .classList.add("active");
+
+};
+
+
+/* =========================================
+   HOMEWORK
+   ========================================= */
+
+async function loadLatestHomework(){
+
+  try{
+
+    const snap =
+    await getDocs(
+      collection(
+        db,
+        "homework"
+      )
+    );
+
+
+    let latest = null;
+
+
+    snap.forEach(d => {
+
+      latest =
+      {
+        id:d.id,
+        ...d.data()
+      };
+
+    });
+
+
+    if(latest){
+
+      document
+      .getElementById("heroHomework")
+      .textContent =
+      latest.title ||
+      latest.subject ||
+      "Homework";
+
+
+      document
+      .getElementById("heroTeacher")
+      .textContent =
+      "By: " +
+      (latest.teacher || "Teacher");
+
+    }
+
+  }
+
+  catch(e){
+
+    console.log(e);
+
+  }
+
+}
+
+
+async function loadHomework(){
+
+  const list =
+  document.getElementById(
+    "homeworkList"
+  );
+
+
+  list.innerHTML =
+  "<p style='padding:15px'>Loading...</p>";
+
+
+  try{
+
+    const snap =
+    await getDocs(
+      collection(
+        db,
+        "homework"
+      )
+    );
+
+
+    list.innerHTML = "";
+
+
+    if(snap.empty){
+
+      list.innerHTML =
+      `<div class="listCard">
+        No homework available.
+      </div>`;
+
+    }
+
+
+    snap.forEach(d => {
+
+      const h =
+      d.data();
+
+
+      list.innerHTML += `
+
+        <div class="homeworkCard">
+
+          <div class="homeworkTop">
+
+            <div class="subject">
+              ${escapeHTML(h.subject || "Homework")}
+            </div>
+
+            <div class="status">
+              Assigned
+            </div>
+
+          </div>
+
+          <div class="homeworkMeta">
+
+            Submit On:
+            ${escapeHTML(h.due || "-")}
+
+          </div>
+
+          <div class="homeworkBody">
+
+            <b>
+              ${escapeHTML(h.title || "Homework")}
+            </b>
+
+            <p style="margin-top:10px">
+              ${escapeHTML(h.description || "")}
+            </p>
+
+          </div>
+
+          <div class="teacher">
+
+            👤
+            ${escapeHTML(h.teacher || "Teacher")}
+
+          </div>
+
+        </div>
+
+      `;
+
+    });
+
+
+    if(userData.role === "admin"){
+
+      document
+      .getElementById("homeworkAdmin")
+      .style.display = "block";
+
+    }
+
+  }
+
+  catch(e){
+
+    list.innerHTML =
+    `<div class="listCard">
+      ${escapeHTML(e.message)}
+    </div>`;
+
+  }
+
+}
+
+
+/* =========================================
+   ADD HOMEWORK
+   ========================================= */
+
+window.addHomework =
+async function(){
+
+  const subject =
+  document
+  .getElementById("hwSubject")
+  .value.trim();
+
+  const title =
+  document
+  .getElementById("hwTitle")
+  .value.trim();
+
+  const due =
+  document
+  .getElementById("hwDue")
+  .value;
+
+  const teacher =
+  document
+  .getElementById("hwTeacher")
+  .value.trim();
+
+  const description =
+  document
+  .getElementById("hwText")
+  .value.trim();
+
+
+  if(!subject || !title){
+
+    alert(
+      "Subject और Homework title डालें."
+    );
+
+    return;
+  }
+
+
+  try{
+
+    await addDoc(
+      collection(
+        db,
+        "homework"
+      ),
+
+      {
+
+        subject,
+
+        title,
+
+        due,
+
+        teacher,
+
+        description,
+
+        createdBy:
+        currentUser.uid,
+
+        createdAt:
+        serverTimestamp()
+
+      }
+    );
+
+
+    alert(
+      "Homework published successfully."
+    );
+
+
+    document
+    .getElementById("hwSubject")
+    .value = "";
+
+    document
+    .getElementById("hwTitle")
+    .value = "";
+
+    document
+    .getElementById("hwDue")
+    .value = "";
+
+    document
+    .getElementById("hwTeacher")
+    .value = "";
+
+    document
+    .getElementById("hwText")
+    .value = "";
+
+
+    loadHomework();
+    loadLatestHomework();
+
+  }
+
+  catch(e){
+
+    alert(
+      "Homework save नहीं हुआ: "+
+      e.message
+    );
+
+  }
+
+};
+
+
+/* =========================================
+   ATTENDANCE
+   ========================================= */
+
+async function loadAttendance(){
+
+  const list =
+  document.getElementById(
+    "attendanceList"
+  );
+
+
+  list.innerHTML =
+  "<div class='listCard'>Loading...</div>";
+
+
+  try{
+
+    let ref =
+    collection(
+      db,
+      "attendance"
+    );
+
+
+    let snap;
+
+
+    if(userData.role === "admin"){
+
+      snap =
+      await getDocs(ref);
+
+    }else{
+
+      snap =
+      await getDocs(
+        query(
+          ref,
+          where(
+            "studentId",
+            "==",
+            currentUser.uid
+          )
+        )
+      );
+
+    }
+
+
+    list.innerHTML = "";
+
+
+    if(snap.empty){
+
+      list.innerHTML =
+      `<div class="listCard">
+        No attendance data.
+      </div>`;
+
+      return;
+
+    }
+
+
+    snap.forEach(d => {
+
+      const a =
+      d.data();
+
+
+      list.innerHTML += `
+
+      <div class="listCard">
+
+        <div class="row">
+          <b>Date</b>
+          <span>${escapeHTML(a.date || "-")}</span>
+        </div>
+
+        <div class="row">
+          <b>Student</b>
+          <span>${escapeHTML(a.studentName || "-")}</span>
+        </div>
+
+        <div class="row">
+          <b>Status</b>
+          <span>${escapeHTML(a.status || "-")}</span>
+        </div>
+
+      </div>
+
+      `;
+
+    });
+
+  }
+
+  catch(e){
+
+    list.innerHTML =
+    `<div class="listCard">
+      ${escapeHTML(e.message)}
+    </div>`;
+
+  }
+
+}
+
+
+/* =========================================
+   FEES
+   ========================================= */
+
+async function loadFees(){
+
+  const list =
+  document.getElementById(
+    "feesList"
+  );
+
+
+  list.innerHTML =
+  "<div class='listCard'>Loading...</div>";
+
+
+  try{
+
+    let ref =
+    collection(
+      db,
+      "fees"
+    );
+
+
+    let snap;
+
+
+    if(userData.role === "admin"){
+
+      snap =
+      await getDocs(ref);
+
+    }else{
+
+      snap =
+      await getDocs(
+        query(
+          ref,
+          where(
+            "studentId",
+            "==",
+            currentUser.uid
+          )
+        )
+      );
+
+    }
+
+
+    list.innerHTML = "";
+
+
+    if(snap.empty){
+
+      list.innerHTML =
+      `<div class="listCard">
+        No fee records.
+      </div>`;
+
+      return;
+
+    }
+
+
+    snap.forEach(d => {
+
+      const f =
+      d.data();
+
+
+      list.innerHTML += `
+
+      <div class="listCard">
+
+        <h3>
+          ₹${escapeHTML(
+            String(f.amount || 0)
+          )}
+        </h3>
+
+        <div class="row">
+          <span>Status</span>
+          <b>${escapeHTML(f.status || "Pending")}</b>
+        </div>
+
+        <div class="row">
+          <span>Date</span>
+          <span>${escapeHTML(f.date || "-")}</span>
+        </div>
+
+      </div>
+
+      `;
+
+    });
+
+  }
+
+  catch(e){
+
+    list.innerHTML =
+    `<div class="listCard">
+      ${escapeHTML(e.message)}
+    </div>`;
+
+  }
+
+}
+
+
+/* =========================================
+   RESULTS
+   ========================================= */
+
+async function loadResults(){
+
+  const list =
+  document.getElementById(
+    "resultsList"
+  );
+
+
+  list.innerHTML =
+  "<div class='listCard'>Loading...</div>";
+
+
+  try{
+
+    let ref =
+    collection(
+      db,
+      "results"
+    );
+
+
+    let snap;
+
+
+    if(userData.role === "admin"){
+
+      snap =
+      await getDocs(ref);
+
+    }else{
+
+      snap =
+      await getDocs(
+        query(
+          ref,
+          where(
+            "studentId",
+            "==",
+            currentUser.uid
+          )
+        )
+      );
+
+    }
+
+
+    list.innerHTML = "";
+
+
+    if(snap.empty){
+
+      list.innerHTML =
+      `<div class="listCard">
+        No result available.
+      </div>`;
+
+      return;
+
+    }
+
+
+    snap.forEach(d => {
+
+      const r =
+      d.data();
+
+
+      list.innerHTML += `
+
+      <div class="listCard">
+
+        <h3>
+          ${escapeHTML(r.subject || "Subject")}
+        </h3>
+
+        <div class="row">
+          <span>Exam</span>
+          <b>${escapeHTML(r.exam || "-")}</b>
+        </div>
+
+        <div class="row">
+          <span>Marks</span>
+          <b>${escapeHTML(String(r.marks || 0))}</b>
+        </div>
+
+      </div>
+
+      `;
+
+    });
+
+  }
+
+  catch(e){
+
+    list.innerHTML =
+    `<div class="listCard">
+      ${escapeHTML(e.message)}
+    </div>`;
+
+  }
+
+}
+
+
+/* =========================================
+   NOTICES
+   ========================================= */
+
+async function loadNotices(){
+
+  const list =
+  document.getElementById(
+    "noticeList"
+  );
+
+
+  list.innerHTML =
+  "<div class='listCard'>Loading...</div>";
+
+
+  try{
+
+    const snap =
+    await getDocs(
+      collection(
+        db,
+        "notices"
+      )
+    );
+
+
+    list.innerHTML = "";
+
+
+    if(snap.empty){
+
+      list.innerHTML =
+      `<div class="listCard">
+        No new notifications.
+      </div>`;
+
+      return;
+
+    }
+
+
+    snap.forEach(d => {
+
+      const n =
+      d.data();
+
+
+      list.innerHTML += `
+
+      <div class="listCard">
+
+        <h3>
+          📢 ${escapeHTML(n.title || "Notice")}
+        </h3>
+
+        <p style="margin-top:10px">
+          ${escapeHTML(n.message || "")}
+        </p>
+
+        <small
+          style="display:block;margin-top:12px;color:#888">
+
+          ${escapeHTML(n.date || "")}
+
+        </small>
+
+      </div>
+
+      `;
+
+    });
+
+  }
+
+  catch(e){
+
+    list.innerHTML =
+    `<div class="listCard">
+      ${escapeHTML(e.message)}
+    </div>`;
+
+  }
+
+}
+
+
+/* =========================================
+   SEARCH
+   ========================================= */
+
+window.searchSchool =
+function(){
+
+  const value =
+  prompt(
+    "क्या खोजना है? उदाहरण: Homework, Fees, Attendance"
+  );
+
+
+  if(!value)
+    return;
+
+
+  const x =
+  value.toLowerCase();
+
+
+  if(x.includes("home"))
+    openPage("homework");
+
+  else if(x.includes("fee"))
+    openPage("fees");
+
+  else if(x.includes("attendance"))
+    openPage("attendance");
+
+  else if(x.includes("result"))
+    openPage("results");
+
+  else if(x.includes("notice"))
+    openPage("notices");
+
+  else
+    alert(
+      "Search result नहीं मिला."
+    );
+
+};
+
+
+/* =========================================
+   LOGOUT
+   ========================================= */
+
+window.logout =
+async function(){
+
+  await signOut(auth);
+
+};
+
+
+/* =========================================
+   HTML SECURITY
+   ========================================= */
+
+function escapeHTML(value){
+
+  return String(value)
+  .replaceAll("&","&amp;")
+  .replaceAll("<","&lt;")
+  .replaceAll(">","&gt;")
+  .replaceAll('"',"&quot;")
+  .replaceAll("'","&#039;");
+
+}
+
+</script>
+
+</body>
+</html>
